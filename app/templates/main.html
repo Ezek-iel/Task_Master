@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Master</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = "css/bootstrap.css" ) }}">
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-body text-center">
+                <h1>Task Master</h1>
+                <h4 class="card-title">Created By</h4>
+                <p class="card-text"><Em>Ezek-iel</Em></p>
+                <img class = "profile-pic" src="img.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <section class="vh-100" style="background-color: #212121;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+              <div class="card rounded-3">
+                <div class="card-body p-4">
+      
+                  <h4 class="text-center my-3 pb-3">Task Master</h4>
+    
+                  <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" method="post">
+                    <div class="col-12">
+                      <div class="form-outline">
+                        <input type="text" id="form1" class="form-control" name = "name"/>
+                        <label class="form-label" for="form1">Enter a task here</label>
+                      </div>
+                    </div>
+      
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                  </form>
+                  
+      
+                  <table class="table mb-4">
+                    <thead>
+                      <tr>
+                        <th scope="col">Todo item</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for task in tasks %}
+                        
+               
+                      <tr>
+                        <td>{{ task.name }}</td>
+                        <td>{{ task.date }}</td>
+                        <td>{{ task.time }}</td>
+                        <td>
+                          <a class="btn btn-danger" href="/delete/{{task.id}}" role="button">Delete</a>
+                          <a class="btn btn-primary" href="/update/{{task.id}}" role="button">Update</a>
+                        </td>
+                      </tr>
+
+                      {% endfor %}
+                    </tbody>
+                  </table>
+      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+</body>
+</html>
